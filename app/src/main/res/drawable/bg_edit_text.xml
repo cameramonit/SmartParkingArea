@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/bg_edit_text_selected"
+        android:state_focused="true" >
+        <bitmap android:tint="@color/primary"/>
+    </item>
+    <item android:drawable="@drawable/bg_edit_text_normal" />
+</selector>
