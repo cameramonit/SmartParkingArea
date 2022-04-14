@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Created by RadenMas on 14/4/2022.
   ~ Copyright (c) 2022.
   -->
@@ -15,17 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartParkingArea">
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name=".ui.user.UserMainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.admin.AdminMainActivity"
             android:exported="false" />
         <activity
             android:name=".ui.auth.AuthActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.admin.AdminMainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.user.UserMainActivity"
-            android:exported="true">
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

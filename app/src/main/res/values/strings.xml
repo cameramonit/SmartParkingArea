@@ -4,7 +4,8 @@
   -->
 
 <resources>
-    <string name="app_name">SmartParkingArea</string>
+    <string name="app_name">Smart Parking Area</string>
+    <string name="dev_name">Raden Mas Dev</string>
 
     <string name="login">Login</string>
     <string name="login_desc">Login your account</string>
@@ -22,4 +23,8 @@
     <string name="next">Continue</string>
     <string name="back">Kembali</string>
     <string name="profile">Profil</string>
+    <string name="update_profile">Ubah Profil</string>
+    <string name="hello">Hai,</string>
+    <string name="welcome">Selamat datang di Smart Parking Area</string>
+    <string name="guide">Gunakan kode QR di bawah ini \nuntuk membuka portal</string>
 </resources>
