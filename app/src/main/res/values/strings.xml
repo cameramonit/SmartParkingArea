@@ -6,6 +6,17 @@
 <resources>
     <string name="app_name">Smart Parking Area</string>
     <string name="dev_name">Raden Mas Dev</string>
+    <string name="app_pref">APP PREF</string>
+    <string name="pref_level">level</string>
+    <string name="pref_admin">admin</string>
+    <string name="pref_user">user</string>
+    <string name="pref_uid">uid</string>
+    <string name="pref_name">name</string>
+    <string name="pref_email">email</string>
+    <string name="pref_phone">phone</string>
+    <string name="pref_qr">qr</string>
+    <string name="pref_avatar">avatar</string>
+    <string name="def">default</string>
 
     <string name="login">Login</string>
     <string name="login_desc">Login your account</string>

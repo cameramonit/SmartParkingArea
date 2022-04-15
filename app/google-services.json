@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "442993471098",
+    "firebase_url": "https://smart-parking-fd510-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "smart-parking-fd510",
+    "storage_bucket": "smart-parking-fd510.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442993471098:android:d78a7270f5eb2badb315c3",
+        "android_client_info": {
+          "package_name": "com.radenmas.smart_parking_area"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442993471098-jtd7k6rt2565u6psujdmnq9579i77iej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4XVem9bL0TU497-cda8DlKdt3duZn-P8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442993471098-jtd7k6rt2565u6psujdmnq9579i77iej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

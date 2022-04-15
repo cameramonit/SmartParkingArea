@@ -28,6 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:textColor="@color/primary_text"
+            android:fontFamily="@font/roboto_bold"
             android:text="@string/app_name"
             android:textSize="20sp" />
     </LinearLayout>
@@ -39,5 +41,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
-        app:SpinKit_Color="@color/white" />
+        app:SpinKit_Color="@color/primary" />
 </RelativeLayout>
