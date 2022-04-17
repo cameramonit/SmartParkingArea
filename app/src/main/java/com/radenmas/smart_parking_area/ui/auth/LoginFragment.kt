@@ -53,7 +53,14 @@ class LoginFragment : Fragment() {
 
         when {
             loginStatus.equals(
-                resources.getString(R.string.pref_user),
+                resources.getString(R.string.dosen),
+                ignoreCase = true
+            ) -> {
+                startActivity(Intent(context, UserMainActivity::class.java))
+                activity?.finish()
+            }
+            loginStatus.equals(
+                resources.getString(R.string.mahasiswa),
                 ignoreCase = true
             ) -> {
                 startActivity(Intent(context, UserMainActivity::class.java))
@@ -106,12 +113,12 @@ class LoginFragment : Fragment() {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             val name = snapshot.child("name").value.toString()
                             val email = snapshot.child("email").value.toString()
+                            val nip_nim = snapshot.child("nip_nim").value.toString()
                             val phone = snapshot.child("phone").value.toString()
                             val level = snapshot.child("level").value.toString()
-                            val qr = snapshot.child("qr").value.toString()
                             val avatar = snapshot.child("avatar").value.toString()
 
-                            if (level == resources.getString(R.string.pref_user)) {
+                            if (level == resources.getString(R.string.dosen) || level == resources.getString(R.string.mahasiswa)) {
                                 editor.putString(
                                     resources.getString(R.string.pref_uid),
                                     uid
@@ -125,21 +132,21 @@ class LoginFragment : Fragment() {
                                     email
                                 )
                                 editor.putString(
+                                    resources.getString(R.string.pref_nip_nim),
+                                    nip_nim
+                                )
+                                editor.putString(
                                     resources.getString(R.string.pref_phone),
                                     phone
                                 )
                                 editor.putString(
                                     resources.getString(R.string.pref_level),
-                                    resources.getString(R.string.pref_user)
+                                    level
                                 )
                                 editor.putString(
                                     resources.getString(R.string.pref_avatar),
                                     avatar
                                 )
-//                                editor.putString(
-//                                    resources.getString(R.string.pref_qr),
-//                                    qr
-//                                )
 
                                 editor.apply()
 

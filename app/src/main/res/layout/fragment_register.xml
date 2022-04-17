@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Created by RadenMas on 14/4/2022.
   ~ Copyright (c) 2022.
   -->
@@ -17,7 +16,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="180dp"
             android:layout_marginTop="16dp"
             android:src="@drawable/img_register" />
 
@@ -31,17 +30,6 @@
             android:textColor="@color/primary_text"
             android:textSize="28sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:fontFamily="@font/roboto"
-            android:text="@string/register_desc"
-            android:textColor="@color/primary_text"
-            android:textSize="16sp" />
-
         <EditText
             android:id="@+id/etFullName"
             style="@style/EditTextAuth"
@@ -51,9 +39,17 @@
             android:inputType="textPersonName" />
 
         <EditText
+            android:id="@+id/etNipNim"
+            style="@style/EditTextAuth"
+            android:layout_marginTop="12dp"
+            android:drawableStart="@drawable/ic_card"
+            android:hint="@string/nip_nim"
+            android:inputType="number" />
+
+        <EditText
             android:id="@+id/etEmail"
             style="@style/EditTextAuth"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:drawableStart="@drawable/ic_email"
             android:hint="@string/email"
             android:inputType="textEmailAddress" />
@@ -61,7 +57,7 @@
         <EditText
             android:id="@+id/etPhone"
             style="@style/EditTextAuth"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:drawableStart="@drawable/ic_phone"
             android:hint="@string/phone"
             android:inputType="phone" />
@@ -69,23 +65,80 @@
         <EditText
             android:id="@+id/etPassword"
             style="@style/EditTextAuth"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:drawableStart="@drawable/ic_lock"
             android:hint="@string/password"
             android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/etRepeatPassword"
+            style="@style/EditTextAuth"
+            android:layout_marginTop="12dp"
+            android:drawableStart="@drawable/ic_lock"
+            android:hint="@string/repeat_password"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/status"
+            android:textColor="@color/primary_text"
+            android:textSize="14sp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbDosen"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_edit_text"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/dosen"
+                android:textColor="@color/hint" />
+
+            <RadioButton
+                android:id="@+id/rbMahasiswa"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_edit_text"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/roboto"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/mahasiswa"
+                android:textColor="@color/hint" />
+        </RadioGroup>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRegister"
             style="@style/ButtonAuth"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/primary"
-            android:text="@string/next" />
+            android:text="@string/regist" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
             android:gravity="center"
             android:orientation="horizontal">
 
