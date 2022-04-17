@@ -5,7 +5,6 @@
 
 package com.radenmas.smart_parking_area.ui.user
 
-//import com.journeyapps.barcodescanner.BarcodeEncoder
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -20,7 +19,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
@@ -28,6 +30,9 @@ import com.radenmas.smart_parking_area.R
 import com.radenmas.smart_parking_area.databinding.FragmentHomeBinding
 import com.radenmas.smart_parking_area.ui.auth.AuthActivity
 import com.radenmas.smart_parking_area.utils.Utils
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 
 /**
@@ -43,11 +48,6 @@ class HomeFragment : Fragment() {
     private var filePath: Uri? = null
 
     private lateinit var uid: String
-    private lateinit var name: String
-    private lateinit var nipnim: String
-    private lateinit var phone: String
-    private lateinit var level: String
-    private lateinit var avatar: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,42 +62,66 @@ class HomeFragment : Fragment() {
         editor = sharedPref.edit()
 
         initView()
+        getData()
         onClick()
 
         return v
     }
 
+    private fun getData() {
+        val dtUser = FirebaseDatabase.getInstance().getReference("User").child(uid)
+        dtUser.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    val name = snapshot.child("name").value.toString()
+                    val nip_nim = snapshot.child("nip_nim").value.toString()
+                    val level = snapshot.child("level").value.toString()
+                    val phone = snapshot.child("phone").value.toString()
+                    val avatar = snapshot.child("avatar").value.toString()
+                    val checkIn = snapshot.child("checkin").value
+
+                    b.tvUserName.text = name
+                    b.tvName.text = name
+                    b.tvNimNip.text = nip_nim
+                    b.tvStatus.text = level
+                    b.tvUserPhone.text = phone
+                    b.tvCheckIn.text = convertLongToTime(checkIn as Long)
+
+                    if (avatar == resources.getString(R.string.def)) {
+                        Glide.with(requireContext())
+                            .load(R.drawable.ic_profile_default)
+                            .into(b.imgAvatar)
+                        Glide.with(requireContext())
+                            .load(R.drawable.ic_profile_default)
+                            .into(b.imgAvatarQR)
+                    } else {
+                        Glide.with(requireContext())
+                            .load(avatar)
+                            .into(b.imgAvatar)
+                        Glide.with(requireContext())
+                            .load(avatar)
+                            .into(b.imgAvatarQR)
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+    }
+
+    fun convertLongToTime(time: Long): String {
+        val date = Date(time)
+        val format = SimpleDateFormat("dd MMM yyyy HH:mm")
+        return format.format(date)
+    }
+
+
     private fun initView() {
         uid = sharedPref.getString(resources.getString(R.string.pref_uid), null).toString()
-        name = sharedPref.getString(resources.getString(R.string.pref_name), null).toString()
-        nipnim = sharedPref.getString(resources.getString(R.string.pref_nip_nim), null).toString()
-        phone = sharedPref.getString(resources.getString(R.string.pref_phone), null).toString()
-        level = sharedPref.getString(resources.getString(R.string.pref_level), null).toString()
-        avatar = sharedPref.getString(resources.getString(R.string.pref_avatar), null).toString()
-
-        if (avatar == resources.getString(R.string.def)) {
-            Glide.with(this)
-                .load(R.drawable.ic_profile_default)
-                .into(b.imgAvatar)
-            Glide.with(this)
-                .load(R.drawable.ic_profile_default)
-                .into(b.imgAvatarQR)
-        } else {
-            Glide.with(this)
-                .load(avatar)
-                .into(b.imgAvatar)
-            Glide.with(this)
-                .load(avatar)
-                .into(b.imgAvatarQR)
-        }
 
         showQRCode()
-
-        b.tvUserName.text = name
-        b.tvName.text = name
-        b.tvNimNip.text = nipnim
-        b.tvStatus.text = level
-        b.tvUserPhone.text = phone
     }
 
     private fun showQRCode() {
@@ -129,6 +153,9 @@ class HomeFragment : Fragment() {
 
     private fun onClick() {
         b.imgAvatar.setOnClickListener {
+            chooseFoto()
+        }
+        b.imgChangeProfile.setOnClickListener {
             chooseFoto()
         }
 
@@ -179,19 +206,6 @@ class HomeFragment : Fragment() {
                             Utils.toast(
                                 requireContext(), "Foto profil berhasil diubah"
                             )
-
-                            editor.putString(
-                                resources.getString(R.string.pref_avatar),
-                                uri.toString()
-                            )
-                            editor.apply()
-
-                            Glide.with(this)
-                                .load(uri.toString())
-                                .into(b.imgAvatar)
-                            Glide.with(this)
-                                .load(uri.toString())
-                                .into(b.imgAvatarQR)
                         }
                 }
                 .addOnFailureListener {

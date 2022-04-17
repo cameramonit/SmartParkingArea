@@ -51,7 +51,7 @@ class RegisterFragment : Fragment() {
             status = resources.getString(R.string.dosen)
             b.rbDosen.setTextColor(ResourcesCompat.getColor(resources, R.color.primary_text, null))
             b.rbDosen.background = resources.getDrawable(R.drawable.bg_edit_text_selected,null)
-            b.rbMahasiswa.setTextColor(ResourcesCompat.getColor(resources, R.color.secondary_text, null))
+            b.rbMahasiswa.setTextColor(ResourcesCompat.getColor(resources, R.color.hint, null))
             b.rbMahasiswa.background = resources.getDrawable(R.drawable.bg_edit_text_normal,null)
         }
 
@@ -59,7 +59,7 @@ class RegisterFragment : Fragment() {
             status = resources.getString(R.string.mahasiswa)
             b.rbMahasiswa.setTextColor(ResourcesCompat.getColor(resources, R.color.primary_text, null))
             b.rbMahasiswa.background = resources.getDrawable(R.drawable.bg_edit_text_selected,null)
-            b.rbDosen.setTextColor(ResourcesCompat.getColor(resources, R.color.secondary_text, null))
+            b.rbDosen.setTextColor(ResourcesCompat.getColor(resources, R.color.hint, null))
             b.rbDosen.background = resources.getDrawable(R.drawable.bg_edit_text_normal,null)
         }
 
@@ -110,6 +110,7 @@ class RegisterFragment : Fragment() {
                 dataUser["password"] = strPassword
                 dataUser["phone"] = strPhone
                 dataUser["level"] = strStatus
+                dataUser["checkin"] = "-"
                 dataUser["avatar"] = "default"
                 dbUser.setValue(dataUser)
 

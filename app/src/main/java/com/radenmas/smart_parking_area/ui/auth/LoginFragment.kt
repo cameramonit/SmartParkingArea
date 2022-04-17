@@ -53,15 +53,13 @@ class LoginFragment : Fragment() {
 
         when {
             loginStatus.equals(
-                resources.getString(R.string.dosen),
-                ignoreCase = true
+                resources.getString(R.string.dosen)
             ) -> {
                 startActivity(Intent(context, UserMainActivity::class.java))
                 activity?.finish()
             }
             loginStatus.equals(
-                resources.getString(R.string.mahasiswa),
-                ignoreCase = true
+                resources.getString(R.string.mahasiswa)
             ) -> {
                 startActivity(Intent(context, UserMainActivity::class.java))
                 activity?.finish()
@@ -111,43 +109,21 @@ class LoginFragment : Fragment() {
                 FirebaseDatabase.getInstance().getReference("User").child(uid)
                     .addValueEventListener(object : ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
-                            val name = snapshot.child("name").value.toString()
-                            val email = snapshot.child("email").value.toString()
-                            val nip_nim = snapshot.child("nip_nim").value.toString()
-                            val phone = snapshot.child("phone").value.toString()
-                            val level = snapshot.child("level").value.toString()
-                            val avatar = snapshot.child("avatar").value.toString()
 
-                            if (level == resources.getString(R.string.dosen) || level == resources.getString(R.string.mahasiswa)) {
+                            val level = snapshot.child("level").value.toString()
+
+                            if (level == resources.getString(R.string.dosen) || level == resources.getString(
+                                    R.string.mahasiswa
+                                )
+                            ) {
                                 editor.putString(
                                     resources.getString(R.string.pref_uid),
                                     uid
                                 )
                                 editor.putString(
-                                    resources.getString(R.string.pref_name),
-                                    name
-                                )
-                                editor.putString(
-                                    resources.getString(R.string.pref_email),
-                                    email
-                                )
-                                editor.putString(
-                                    resources.getString(R.string.pref_nip_nim),
-                                    nip_nim
-                                )
-                                editor.putString(
-                                    resources.getString(R.string.pref_phone),
-                                    phone
-                                )
-                                editor.putString(
                                     resources.getString(R.string.pref_level),
                                     level
                                 )
-                                editor.putString(
-                                    resources.getString(R.string.pref_avatar),
-                                    avatar
-                                )
-
                                 editor.apply()
 
                                 startActivity(Intent(context, UserMainActivity::class.java))
@@ -166,7 +142,6 @@ class LoginFragment : Fragment() {
                                 startActivity(Intent(context, AdminMainActivity::class.java))
                                 activity?.finish()
                             }
-
                         }
 
                         override fun onCancelled(error: DatabaseError) {

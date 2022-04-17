@@ -21,23 +21,23 @@
         <RelativeLayout
             android:id="@+id/rlAvatar"
             android:layout_width="64dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_height="64dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgAvatar"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <ImageView
                 android:id="@+id/imgChangeProfile"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/bg_icon_white"
-                android:padding="2dp"
+                android:padding="3dp"
                 android:src="@drawable/ic_camera"
                 app:tint="@color/primary_text" />
         </RelativeLayout>
@@ -177,7 +177,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/titleName"
                             android:layout_marginStart="36dp"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="2dp"
                             android:fontFamily="@font/roboto_medium"
                             android:maxLines="1"
                             android:textColor="@color/primary_text"
@@ -215,7 +215,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/titleNipNim"
                             android:layout_marginStart="36dp"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="2dp"
                             android:fontFamily="@font/roboto_medium"
                             android:maxLines="1"
                             android:textColor="@color/primary_text"
@@ -253,7 +253,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/titleStatus"
                             android:layout_marginStart="36dp"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="2dp"
                             android:fontFamily="@font/roboto_medium"
                             android:maxLines="1"
                             android:textColor="@color/primary_text"
@@ -291,7 +291,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/titleUserPhone"
                             android:layout_marginStart="36dp"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="2dp"
                             android:fontFamily="@font/roboto_medium"
                             android:maxLines="1"
                             android:textColor="@color/primary_text"
@@ -325,15 +325,14 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/tvTime"
+                            android:id="@+id/tvCheckIn"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/titleTime"
                             android:layout_marginStart="36dp"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="2dp"
                             android:fontFamily="@font/roboto_medium"
                             android:maxLines="1"
-                            android:text="@string/dash"
                             android:textColor="@color/primary_text"
                             android:textSize="14sp" />
 
