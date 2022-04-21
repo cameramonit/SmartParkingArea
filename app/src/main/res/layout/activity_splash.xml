@@ -8,6 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     tools:context=".ui.splash.SplashActivity">
 
     <LinearLayout
@@ -19,8 +20,8 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:contentDescription="@string/app_name"
             android:src="@mipmap/ic_launcher_round" />
 
@@ -28,9 +29,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:textColor="@color/primary_text"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/app_name"
+            android:textColor="@color/white"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -41,5 +42,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
-        app:SpinKit_Color="@color/primary" />
+        app:SpinKit_Color="@color/white" />
 </RelativeLayout>
