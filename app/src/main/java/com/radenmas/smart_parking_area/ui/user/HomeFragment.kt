@@ -32,7 +32,6 @@ import com.radenmas.smart_parking_area.ui.auth.AuthActivity
 import com.radenmas.smart_parking_area.utils.Utils
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.HashMap
 
 
 /**
@@ -79,13 +78,24 @@ class HomeFragment : Fragment() {
                     val phone = snapshot.child("phone").value.toString()
                     val avatar = snapshot.child("avatar").value.toString()
                     val checkIn = snapshot.child("checkin").value
+                    val checkOut = snapshot.child("checkout").value
 
                     b.tvUserName.text = name
                     b.tvName.text = name
                     b.tvNimNip.text = nip_nim
                     b.tvStatus.text = level
                     b.tvUserPhone.text = phone
-                    b.tvCheckIn.text = convertLongToTime(checkIn as Long)
+                    if (checkIn != "-") {
+                        b.tvCheckIn.text = convertLongToTime(checkIn as Long)
+                    } else {
+                        b.tvCheckIn.text = "-"
+                    }
+
+                    if (checkOut != "-") {
+                        b.tvCheckOut.text = convertLongToTime(checkOut as Long)
+                    } else {
+                        b.tvCheckOut.text = "-"
+                    }
 
                     if (avatar == resources.getString(R.string.def)) {
                         Glide.with(requireContext())

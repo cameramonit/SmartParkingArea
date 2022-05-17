@@ -51,35 +51,22 @@ class LoginFragment : Fragment() {
         val loginStatus: String? =
             sharedPref.getString(resources.getString(R.string.pref_level), "")
 
-        when {
-            loginStatus.equals(
-                resources.getString(R.string.dosen)
-            ) -> {
+        when (loginStatus.toString()) {
+            resources.getString(R.string.dosen),
+            resources.getString(R.string.mahasiswa) -> {
                 startActivity(Intent(context, UserMainActivity::class.java))
                 activity?.finish()
             }
-            loginStatus.equals(
-                resources.getString(R.string.mahasiswa)
-            ) -> {
-                startActivity(Intent(context, UserMainActivity::class.java))
-                activity?.finish()
-            }
-            loginStatus.equals(
-                resources.getString(R.string.pref_admin),
-                ignoreCase = true
-            ) -> {
+
+            resources.getString(R.string.pref_checkout),
+            resources.getString(R.string.pref_checkin) -> {
                 startActivity(Intent(context, AdminMainActivity::class.java))
                 activity?.finish()
             }
         }
-        initView()
         onClick()
 
         return v
-    }
-
-    private fun initView() {
-
     }
 
     private fun onClick() {
@@ -110,37 +97,38 @@ class LoginFragment : Fragment() {
                     .addValueEventListener(object : ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
 
-                            val level = snapshot.child("level").value.toString()
+                            when (val level = snapshot.child("level").value.toString()) {
+                                resources.getString(R.string.dosen),
+                                resources.getString(R.string.mahasiswa) -> {
+                                    editor.putString(
+                                        resources.getString(R.string.pref_uid),
+                                        uid
+                                    )
+                                    editor.putString(
+                                        resources.getString(R.string.pref_level),
+                                        level
+                                    )
+                                    editor.apply()
 
-                            if (level == resources.getString(R.string.dosen) || level == resources.getString(
-                                    R.string.mahasiswa
-                                )
-                            ) {
-                                editor.putString(
-                                    resources.getString(R.string.pref_uid),
-                                    uid
-                                )
-                                editor.putString(
-                                    resources.getString(R.string.pref_level),
-                                    level
-                                )
-                                editor.apply()
+                                    startActivity(Intent(context, UserMainActivity::class.java))
+                                    activity?.finish()
+                                }
 
-                                startActivity(Intent(context, UserMainActivity::class.java))
-                                activity?.finish()
-                            } else if (level == resources.getString(R.string.pref_admin)) {
-                                editor.putString(
-                                    resources.getString(R.string.pref_uid),
-                                    uid
-                                )
-                                editor.putString(
-                                    resources.getString(R.string.pref_level),
-                                    resources.getString(R.string.pref_admin)
-                                )
-                                editor.apply()
+                                resources.getString(R.string.pref_checkout),
+                                resources.getString(R.string.pref_checkin) -> {
+                                    editor.putString(
+                                        resources.getString(R.string.pref_uid),
+                                        uid
+                                    )
+                                    editor.putString(
+                                        resources.getString(R.string.pref_level),
+                                        level
+                                    )
+                                    editor.apply()
 
-                                startActivity(Intent(context, AdminMainActivity::class.java))
-                                activity?.finish()
+                                    startActivity(Intent(context, AdminMainActivity::class.java))
+                                    activity?.finish()
+                                }
                             }
                         }
 

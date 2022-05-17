@@ -13,23 +13,5 @@
         android:id="@+id/homeFragment"
         android:name="com.radenmas.smart_parking_area.ui.user.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.radenmas.smart_parking_area.ui.user.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
-        <action
-            android:id="@+id/action_profileFragment_to_updateProfileFragment"
-            app:destination="@id/updateProfileFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/updateProfileFragment"
-        android:name="com.radenmas.smart_parking_area.ui.user.UpdateProfileFragment"
-        android:label="fragment_update_profile"
-        tools:layout="@layout/fragment_update_profile" />
+        tools:layout="@layout/fragment_home" />
 </navigation>

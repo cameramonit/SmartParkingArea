@@ -21,14 +21,15 @@
         <RelativeLayout
             android:id="@+id/rlAvatar"
             android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_height="64dp">
+            android:layout_marginTop="8dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgAvatar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                app:civ_circle_background_color="@color/white" />
 
             <ImageView
                 android:id="@+id/imgChangeProfile"
@@ -128,7 +129,8 @@
                     android:id="@+id/imgAvatarQR"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:layout_centerInParent="true" />
+                    android:layout_centerInParent="true"
+                    app:civ_circle_background_color="@color/white" />
             </RelativeLayout>
 
             <androidx.cardview.widget.CardView
@@ -302,6 +304,44 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingStart="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="16dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_clock"
+                            app:tint="@color/primary_text" />
+
+                        <TextView
+                            android:id="@+id/titleTimeIn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="36dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/jam_masuk"
+                            android:textColor="@color/secondary_text"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvCheckIn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/titleTimeIn"
+                            android:layout_marginStart="36dp"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:maxLines="1"
+                            android:textColor="@color/primary_text"
+                            android:textSize="14sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:paddingStart="16dp"
                         android:paddingTop="8dp"
@@ -315,7 +355,7 @@
                             app:tint="@color/primary_text" />
 
                         <TextView
-                            android:id="@+id/titleTime"
+                            android:id="@+id/titleTimeOut"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="36dp"
@@ -325,10 +365,10 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/tvCheckIn"
+                            android:id="@+id/tvCheckOut"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/titleTime"
+                            android:layout_below="@id/titleTimeOut"
                             android:layout_marginStart="36dp"
                             android:layout_marginTop="2dp"
                             android:fontFamily="@font/roboto_medium"

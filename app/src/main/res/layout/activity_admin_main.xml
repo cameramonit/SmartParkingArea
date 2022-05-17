@@ -21,10 +21,10 @@
             android:layout_height="56dp">
 
             <TextView
+                android:id="@+id/tvLevel"
                 style="@style/TitleToolbar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Scanner QR Code" />
+                android:layout_height="wrap_content" />
 
             <ImageView
                 android:id="@+id/imgLogout"

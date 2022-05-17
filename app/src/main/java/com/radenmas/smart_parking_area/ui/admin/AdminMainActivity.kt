@@ -36,6 +36,8 @@ class AdminMainActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
     private lateinit var sharedPref: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
 
+    private lateinit var loginStatus: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
@@ -46,6 +48,10 @@ class AdminMainActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
             resources.getString(R.string.app_pref), Context.MODE_PRIVATE
         )!!
         editor = sharedPref.edit()
+
+        loginStatus = sharedPref.getString(resources.getString(R.string.pref_level), "").toString()
+
+        b.tvLevel.text = loginStatus
 
         if (ContextCompat.checkSelfPermission(
                 this,
@@ -74,16 +80,16 @@ class AdminMainActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
         val uidUser = p0?.text.toString()
         val timesNow = System.currentTimeMillis()
 
-        val checkin = Firebase.database.getReference("User").child(uidUser)
+        val check = Firebase.database.getReference("User").child(uidUser)
         val dataUser: MutableMap<String, Any> = HashMap()
-        dataUser["checkin"] = timesNow
-        checkin.updateChildren(dataUser).addOnSuccessListener {
+        dataUser[loginStatus] = timesNow
+        check.updateChildren(dataUser).addOnSuccessListener {
             Handler(Looper.getMainLooper()).postDelayed({
                 onResume()
-            }, 5000)
+            }, 3000)
         }
 
-        val status = Firebase.database.getReference("status")
+        val status = Firebase.database.getReference(loginStatus)
         status.setValue(1)
         Handler(Looper.getMainLooper()).postDelayed({
             status.setValue(0)
