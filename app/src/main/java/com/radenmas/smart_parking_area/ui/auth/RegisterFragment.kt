@@ -111,6 +111,7 @@ class RegisterFragment : Fragment() {
                 dataUser["phone"] = strPhone
                 dataUser["level"] = strStatus
                 dataUser["checkin"] = "-"
+                dataUser["checkout"] = "-"
                 dataUser["avatar"] = "default"
                 dbUser.setValue(dataUser)
 
