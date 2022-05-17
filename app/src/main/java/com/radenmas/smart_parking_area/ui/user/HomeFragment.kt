@@ -19,10 +19,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
@@ -46,6 +43,8 @@ class HomeFragment : Fragment() {
     private val RESULT_OK = -1
     private var filePath: Uri? = null
 
+    private lateinit var dtUser: DatabaseReference
+
     private lateinit var uid: String
 
     override fun onCreateView(
@@ -60,6 +59,10 @@ class HomeFragment : Fragment() {
         )!!
         editor = sharedPref.edit()
 
+        uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
+
+        dtUser = FirebaseDatabase.getInstance().getReference("User").child(uid)
+
         initView()
         getData()
         onClick()
@@ -68,7 +71,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun getData() {
-        val dtUser = FirebaseDatabase.getInstance().getReference("User").child(uid)
         dtUser.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -77,8 +79,8 @@ class HomeFragment : Fragment() {
                     val level = snapshot.child("level").value.toString()
                     val phone = snapshot.child("phone").value.toString()
                     val avatar = snapshot.child("avatar").value.toString()
-                    val checkIn = snapshot.child("checkin").value
-                    val checkOut = snapshot.child("checkout").value
+                    val checkIn = snapshot.child("checkin").value.toString()
+                    val checkOut = snapshot.child("checkout").value.toString()
 
                     b.tvUserName.text = name
                     b.tvName.text = name
@@ -86,13 +88,13 @@ class HomeFragment : Fragment() {
                     b.tvStatus.text = level
                     b.tvUserPhone.text = phone
                     if (checkIn != "-") {
-                        b.tvCheckIn.text = convertLongToTime(checkIn as Long)
+                        b.tvCheckIn.text = convertLongToTime(checkIn.toLong())
                     } else {
                         b.tvCheckIn.text = "-"
                     }
 
                     if (checkOut != "-") {
-                        b.tvCheckOut.text = convertLongToTime(checkOut as Long)
+                        b.tvCheckOut.text = convertLongToTime(checkOut.toLong())
                     } else {
                         b.tvCheckOut.text = "-"
                     }
@@ -129,8 +131,6 @@ class HomeFragment : Fragment() {
 
 
     private fun initView() {
-        uid = sharedPref.getString(resources.getString(R.string.pref_uid), null).toString()
-
         showQRCode()
     }
 

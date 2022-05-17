@@ -131,7 +131,7 @@
             style="@style/ButtonAuth"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/primary"
-            android:text="@string/regist" />
+            android:text="@string/register" />
 
         <LinearLayout
             android:layout_width="match_parent"

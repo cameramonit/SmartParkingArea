@@ -94,16 +94,12 @@ class LoginFragment : Fragment() {
                 val uid = it.user?.uid.toString()
 
                 FirebaseDatabase.getInstance().getReference("User").child(uid)
-                    .addValueEventListener(object : ValueEventListener {
+                    .addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
 
                             when (val level = snapshot.child("level").value.toString()) {
                                 resources.getString(R.string.dosen),
                                 resources.getString(R.string.mahasiswa) -> {
-                                    editor.putString(
-                                        resources.getString(R.string.pref_uid),
-                                        uid
-                                    )
                                     editor.putString(
                                         resources.getString(R.string.pref_level),
                                         level
@@ -116,10 +112,6 @@ class LoginFragment : Fragment() {
 
                                 resources.getString(R.string.pref_checkout),
                                 resources.getString(R.string.pref_checkin) -> {
-                                    editor.putString(
-                                        resources.getString(R.string.pref_uid),
-                                        uid
-                                    )
                                     editor.putString(
                                         resources.getString(R.string.pref_level),
                                         level

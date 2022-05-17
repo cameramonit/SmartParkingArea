@@ -5,49 +5,29 @@
 
 <resources>
     <string name="app_name">Smart Parking Area</string>
-    <string name="dev_name">Raden Mas Dev</string>
     <string name="app_pref">APP PREF</string>
     <string name="pref_level">level</string>
     <string name="pref_checkin">checkin</string>
     <string name="pref_checkout">checkout</string>
-    <string name="pref_user">user</string>
-    <string name="pref_uid">uid</string>
-    <string name="pref_name">name</string>
-    <string name="pref_nip_nim">nip_nim</string>
-    <string name="pref_email">email</string>
-    <string name="pref_phone">phone</string>
-    <string name="pref_qr">qr</string>
-    <string name="pref_avatar">avatar</string>
     <string name="def">default</string>
 
     <string name="login">Login</string>
-    <string name="login_desc">Login your account</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="repeat_password">Ulang Password</string>
-    <string name="forgot_password">Forgot Password?</string>
-    <string name="login_google">Login with Google</string>
     <string name="do_not_have_account">Belum punya akun?</string>
 
-    <string name="regist">Daftar</string>
-    <string name="register">Registrasi</string>
-    <string name="register_desc">Register your account</string>
+    <string name="register">Daftar</string>
     <string name="full_name">Nama</string>
     <string name="nip_nim">NIP/NIM</string>
     <string name="phone">No Handphone</string>
     <string name="have_account">Sudah punya akun?</string>
-    <string name="back">Kembali</string>
-    <string name="profile">Profil</string>
-    <string name="update_profile">Ubah Profil</string>
+
     <string name="hello">Hai,</string>
-    <string name="welcome">Selamat datang di Smart Parking Area</string>
     <string name="guide">Gunakan kode QR di bawah ini \nuntuk membuka portal</string>
-    <string name="dash">-</string>
-    <string name="user_id">ID User</string>
-    <string name="logout">Logout</string>
-    <string name="ubah_profil">Ubah Profil</string>
     <string name="dosen">Dosen</string>
     <string name="mahasiswa">Mahasiswa</string>
     <string name="status">Status</string>
     <string name="jam_masuk">Jam Masuk</string>
+    <string name="jam_keluar">Jam Keluar</string>
 </resources>
