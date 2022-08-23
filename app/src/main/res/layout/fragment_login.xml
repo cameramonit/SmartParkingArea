@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Created by RadenMas on 14/4/2022.
   ~ Copyright (c) 2022.
   -->
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,21 +33,38 @@
             android:textColor="@color/primary_text"
             android:textSize="28sp" />
 
-        <EditText
-            android:id="@+id/etEmail"
-            style="@style/EditTextAuth"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:drawableStart="@drawable/ic_email"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress" />
+            app:endIconMode="clear_text"
+            app:hintEnabled="false">
 
-        <EditText
-            android:id="@+id/etPassword"
-            style="@style/EditTextAuth"
+            <EditText
+                android:id="@+id/etEmail"
+                style="@style/EditTextAuth"
+                android:drawableStart="@drawable/ic_email"
+                android:hint="@string/email"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_lock"
-            android:hint="@string/password"
-            android:inputType="textPassword" />
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/etPassword"
+                style="@style/EditTextAuth"
+                android:drawableStart="@drawable/ic_lock"
+                android:hint="@string/password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogin"
