@@ -16,8 +16,8 @@ android {
         applicationId "com.radenmas.smart_parking_area"
         minSdk 24
         targetSdk 31
-        versionCode 1
-        versionName "1.5"
+        versionCode 6
+        versionName "1.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

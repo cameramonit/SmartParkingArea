@@ -91,9 +91,6 @@ class AdminMainActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
         val status = Firebase.database.getReference(loginStatus)
         status.setValue(1)
-        Handler(Looper.getMainLooper()).postDelayed({
-            status.setValue(0)
-        }, 1000)
     }
 
     override fun onResume() {
